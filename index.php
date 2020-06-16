@@ -3,15 +3,14 @@
 session_start();
 echo 'These are SESSIONS: ';
 		print_r($_SESSION);
-echo 'These are POSTS: ';
-		print_r($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if(isset($_POST['username'], $_POST['password']))
 	{
 	  	$_SESSION['uname'] = $_POST['username'];
 		$_SESSION['pword'] = $_POST['password'];
-
+		$_SESSION['result'] = 0;
+		
 		header('Location: otherpage.php');
 
 	}
@@ -35,11 +34,10 @@ if (isset($_GET['logout'])) {
 	<button type="submit">Submit</button>
 </form>
 
+<?php 
+include 'header.php';
+?>
 
-<a href="index.php">Index page</a>
-<a href="otherpage.php">Other page</a>
 
-<a href="otherotherpage.php">Other Other page</a>
-<a href="index.php?logout=true">Logout</a>
 </body>
 </html>
